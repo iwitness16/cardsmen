@@ -28,7 +28,7 @@ export function ProductDetailClient({ product: p }: { product: Product }) {
     `Please send me ordering instructions.`,
   ].join('\n')
 
-  const waUrl = `https://wa.me/13344468194?text=${encodeURIComponent(waMsg)}`
+  const waUrl = `https://wa.me/14022016685?text=${encodeURIComponent(waMsg)}`
 
   return (
     <>

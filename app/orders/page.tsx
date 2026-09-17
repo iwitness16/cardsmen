@@ -7,7 +7,7 @@ import { ALL_PRODUCTS } from '@/lib/products'
 import { db } from '@/lib/firebase'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 
-const ADMIN_WHATSAPP = '13344468194'
+const ADMIN_WHATSAPP = '14022016685'
 
 /* ── Flat list for the dropdown (name + price + cat) ── */
 const allProducts = ALL_PRODUCTS.map(p => ({
