@@ -10,8 +10,24 @@ export const metadata: Metadata = {
   title: 'CardsMen — Best Scannable IDs',
   description: 'CardsMen — the #1 source for premium scannable fake IDs. Serving USA, Canada, UK, Europe and more. Quality guaranteed.',
   icons: {
-    icon:  [{ url: '/icon.svg', type: 'image/svg+xml' }],
-    apple: '/apple-icon.png',
+    icon:  [
+      { url: '/images/cartellogo.jpg', type: 'image/jpeg' },
+      { url: '/icon.svg', type: 'image/svg+xml' }
+    ],
+    apple: '/images/cartellogo.jpg',
+    shortcut: '/images/cartellogo.jpg',
+  },
+  openGraph: {
+    title: 'CardsMen — Best Scannable IDs',
+    description: 'CardsMen — the #1 source for premium scannable fake IDs. Serving USA, Canada, UK, Europe and more. Quality guaranteed.',
+    images: ['/images/cartellogo.jpg'],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'CardsMen — Best Scannable IDs',
+    description: 'CardsMen — the #1 source for premium scannable fake IDs. Serving USA, Canada, UK, Europe and more. Quality guaranteed.',
+    images: ['/images/cartellogo.jpg'],
   },
 }
 
