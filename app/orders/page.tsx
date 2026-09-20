@@ -9,7 +9,7 @@ import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 
 const ADMIN_WHATSAPP = '14022016685'
 
-/* ── Flat list for the dropdown (name + price + cat) ── */
+/* ── Flat list for the dropdown (all products from lib/products) ── */
 const allProducts = ALL_PRODUCTS.map(p => ({
   name:  p.name,
   img:   p.images[0],
@@ -17,23 +17,8 @@ const allProducts = ALL_PRODUCTS.map(p => ({
   price: `${p.currency}${p.price}.00`,
   cat:   p.country,
   model: p.model,
-})).concat([
-  // Non-CSV countries kept as simple entries
-  { name: 'UK Fake ID — DVLA Photocard (Teslin)',   img: 'https://www.fakeids.com/media/product/fakeids_front.jpg', imgs: ['https://www.fakeids.com/media/product/fakeids_front.jpg'], price: '£80.00',      cat: 'uk',  model: 'UK DVLA Photocard' },
-  { name: 'UK Provisional Licence (Polycarbonate)', img: 'https://www.fakeids.com/media/product/fakeids_front.jpg', imgs: ['https://www.fakeids.com/media/product/fakeids_front.jpg'], price: '£80.00',      cat: 'uk',  model: 'UK Provisional Licence' },
-  { name: 'Germany Fake ID — Scannable Replica',    img: '/images/germany.jpg',                                     imgs: ['/images/germany.jpg'],                                     price: '€100.00',     cat: 'eu',  model: 'Germany ID' },
-  { name: 'Germany Fake ID (Polycarbonate)',         img: '/images/germany.jpg',                                     imgs: ['/images/germany.jpg'],                                     price: '€100.00',     cat: 'eu',  model: 'Germany Polycarbonate ID' },
-  { name: 'Netherlands Fake ID — Scannable Replica',img: '/images/netherlands.jpg',                                  imgs: ['/images/netherlands.jpg'],                                 price: '€100.00',     cat: 'eu',  model: 'Netherlands ID' },
-  { name: 'Netherlands Fake ID (Polycarbonate)',     img: '/images/netherlands.jpg',                                  imgs: ['/images/netherlands.jpg'],                                 price: '€100.00',     cat: 'eu',  model: 'Netherlands Polycarbonate ID' },
-  { name: 'New South Wales Driver Licence',          img: '/images/australia.jpg',                                   imgs: ['/images/australia.jpg'],                                   price: 'AUD$100.00',  cat: 'au',  model: 'NSW Driver Licence' },
-  { name: 'Victoria Driver Licence',                 img: '/images/australia.jpg',                                   imgs: ['/images/australia.jpg'],                                   price: 'AUD$100.00',  cat: 'au',  model: 'Victoria Driver Licence' },
-  { name: 'Queensland Driver Licence',               img: '/images/australia.jpg',                                   imgs: ['/images/australia.jpg'],                                   price: 'AUD$100.00',  cat: 'au',  model: 'Queensland Driver Licence' },
-  { name: 'Western Australia Driver Licence',        img: '/images/australia.jpg',                                   imgs: ['/images/australia.jpg'],                                   price: 'AUD$100.00',  cat: 'au',  model: 'WA Driver Licence' },
-  { name: 'South Australia Driver Licence',          img: '/images/australia.jpg',                                   imgs: ['/images/australia.jpg'],                                   price: 'AUD$100.00',  cat: 'au',  model: 'SA Driver Licence' },
-  { name: 'Tasmania Driver Licence',                 img: '/images/australia.jpg',                                   imgs: ['/images/australia.jpg'],                                   price: 'AUD$100.00',  cat: 'au',  model: 'Tasmania Driver Licence' },
-  { name: 'ACT Driver Licence',                      img: '/images/australia.jpg',                                   imgs: ['/images/australia.jpg'],                                   price: 'AUD$100.00',  cat: 'au',  model: 'ACT Driver Licence' },
-  { name: 'Northern Territory Driver Licence',       img: '/images/australia.jpg',                                   imgs: ['/images/australia.jpg'],                                   price: 'AUD$100.00',  cat: 'au',  model: 'NT Driver Licence' },
-])
+  slug:  p.slug,
+}))
 
 function generateOrderId() {
   return 'CM-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase()

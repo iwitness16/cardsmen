@@ -11,7 +11,7 @@ export default function USAProductsPage() {
         <PageHeader title="USA — STATE IDs" />
         <div className="products-page shell">
           <div style={{ marginBottom: '20px' }}>
-            <Link href="/products" style={{ color: 'var(--red)', fontSize: '13px', fontWeight: 600 }}>
+            <Link href="/products" style={{ color: '#1a6fa8', fontSize: '13px', fontWeight: 600 }}>
               ← Back to all countries
             </Link>
           </div>

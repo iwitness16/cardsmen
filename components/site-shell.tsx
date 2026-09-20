@@ -2,6 +2,8 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
+import { ProductSearch } from './product-search'
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -23,9 +25,11 @@ function CartIcon() {
 }
 
 export function SiteHeader({ active }: { active?: string }) {
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false)
+
   return (
     <header className="site-header">
-      {/* ── Logo + Cart row ── */}
+      {/* ── Logo + Search + Cart row ── */}
       <div className="shell header-top">
         <Link href="/" className="brand-logo" aria-label="CardsMen home">
           <Image
@@ -44,11 +48,52 @@ export function SiteHeader({ active }: { active?: string }) {
           />
         </Link>
 
-        <Link href="/cart" className="cart-icon-btn" aria-label="Shopping cart">
-          <CartIcon />
-          <span>Cart</span>
-        </Link>
+        {/* Desktop search bar - visible on larger screens */}
+        <div className="header-search-desktop">
+          <ProductSearch />
+        </div>
+
+        {/* Right side icons group */}
+        <div className="header-icons-group">
+          {/* Mobile search icon - visible on small screens */}
+          <button 
+            className="header-search-mobile-btn"
+            onClick={() => setMobileSearchOpen(true)}
+            aria-label="Open search"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+          </button>
+
+          <Link href="/cart" className="cart-icon-btn" aria-label="Shopping cart">
+            <CartIcon />
+            <span>Cart</span>
+          </Link>
+        </div>
       </div>
+
+      {/* Mobile search overlay */}
+      {mobileSearchOpen && (
+        <div className="search-mobile-overlay" onClick={() => setMobileSearchOpen(false)}>
+          <div className="search-mobile-container" onClick={(e) => e.stopPropagation()}>
+            <div className="search-mobile-header">
+              <h3>Search Products</h3>
+              <button 
+                className="search-mobile-close"
+                onClick={() => setMobileSearchOpen(false)}
+                aria-label="Close search"
+              >
+                ×
+              </button>
+            </div>
+            <div className="search-mobile-body">
+              <ProductSearch />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── Nav bar — always visible, horizontally scrollable on small screens ── */}
       <nav className="main-nav-bar" aria-label="Primary navigation">

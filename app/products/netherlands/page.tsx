@@ -1,46 +1,28 @@
 import Link from 'next/link'
 import { Footer, PageHeader, SiteHeader } from '@/components/site-shell'
-
-const products = [
-  { name: 'Netherlands Fake ID — Scannable Replica', img: '/images/netherlands.jpg' },
-  { name: 'Netherlands Fake ID (Polycarbonate)', img: '/images/netherlands.jpg' },
-]
-
-function ProductCard({ name, img }: { name: string; img: string }) {
-  const encodedName = encodeURIComponent(name)
-  const encodedImg = encodeURIComponent(img)
-  return (
-    <article className="product-card">
-      <div className="product-card-img-wrap">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={img} alt={name} loading="lazy"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-      </div>
-      <div className="product-card-body">
-        <h3>{name}</h3>
-        <p className="product-price">€100.00</p>
-        <Link href={`/orders?product=${encodedName}&img=${encodedImg}&price=%E2%82%AC100.00`} className="btn-select">
-          Place Order
-        </Link>
-      </div>
-    </article>
-  )
-}
+import { NETHERLANDS_PRODUCTS } from '@/lib/products'
+import { IDCard } from '@/components/id-card'
 
 export default function NetherlandsProductsPage() {
   return (
     <>
       <SiteHeader active="Buy Fake ID" />
       <main>
-        <PageHeader title="NETHERLANDS IDs" />
+        <PageHeader title="NETHERLANDS — NATIONAL ID CARDS" />
         <div className="products-page shell">
           <div style={{ marginBottom: '20px' }}>
-            <Link href="/products" style={{ color: 'var(--red)', fontSize: '13px', fontWeight: 600 }}>← Back to all countries</Link>
+            <Link href="/products" style={{ color: '#1a6fa8', fontSize: '13px', fontWeight: 600 }}>
+              ← Back to all countries
+            </Link>
           </div>
           <section aria-labelledby="nl-heading">
-            <h2 id="nl-heading" className="country-section-title">🇳🇱 Netherlands — Dutch ID Cards</h2>
+            <h2 id="nl-heading" className="country-section-title">
+              🇳🇱 Netherlands — Dutch ID Cards
+            </h2>
             <div className="products-grid">
-              {products.map((p, i) => <ProductCard key={i} name={p.name} img={p.img} />)}
+              {NETHERLANDS_PRODUCTS.map((p) => (
+                <IDCard key={p.slug} product={p} />
+              ))}
             </div>
           </section>
         </div>

@@ -557,7 +557,112 @@ export const USA_PRODUCTS = buildProducts(RAW_USA, 'usa', 120, '$', 150)
 export const CANADA_PRODUCTS = buildProducts(RAW_CANADA, 'canada', 120, '$', 150)
   .sort((a, b) => a.name.localeCompare(b.name))
 
-export const ALL_PRODUCTS: Product[] = [...USA_PRODUCTS, ...CANADA_PRODUCTS]
+/* ── UK products ── */
+const RAW_UK: { name: string; model: string; images: string[] }[] = [
+  {
+    name: 'UK Fake ID — DVLA Photocard (Teslin)',
+    model: 'UK DVLA Photocard',
+    images: ['/images/uk1.jpg', '/images/uk2.jpg', '/images/uk3.jpg', '/images/uk4.jpg'],
+  },
+  {
+    name: 'UK Provisional Licence (Polycarbonate)',
+    model: 'UK Provisional Licence',
+    images: ['/images/uk1.jpg', '/images/uk2.jpg', '/images/uk3.jpg', '/images/uk4.jpg'],
+  },
+]
+
+export const UK_PRODUCTS = buildProducts(RAW_UK, 'uk', 80, '£', 100)
+  .sort((a, b) => a.name.localeCompare(b.name))
+
+/* ── Germany products ── */
+const RAW_GERMANY: { name: string; model: string; images: string[] }[] = [
+  {
+    name: 'Germany Fake ID — Scannable Replica',
+    model: 'Germany ID',
+    images: ['/images/germany.jpg'],
+  },
+  {
+    name: 'Germany Fake ID (Polycarbonate)',
+    model: 'Germany Polycarbonate ID',
+    images: ['/images/germany.jpg'],
+  },
+]
+
+export const GERMANY_PRODUCTS = buildProducts(RAW_GERMANY, 'germany', 100, '€', 120)
+  .sort((a, b) => a.name.localeCompare(b.name))
+
+/* ── Netherlands products ── */
+const RAW_NETHERLANDS: { name: string; model: string; images: string[] }[] = [
+  {
+    name: 'Netherlands Fake ID — Scannable Replica',
+    model: 'Netherlands ID',
+    images: ['/images/netherlands.jpg'],
+  },
+  {
+    name: 'Netherlands Fake ID (Polycarbonate)',
+    model: 'Netherlands Polycarbonate ID',
+    images: ['/images/netherlands.jpg'],
+  },
+]
+
+export const NETHERLANDS_PRODUCTS = buildProducts(RAW_NETHERLANDS, 'netherlands', 100, '€', 120)
+  .sort((a, b) => a.name.localeCompare(b.name))
+
+/* ── Australia products ── */
+const RAW_AUSTRALIA: { name: string; model: string; images: string[] }[] = [
+  {
+    name: 'New South Wales Driver Licence',
+    model: 'NSW Driver Licence',
+    images: ['/images/australia.jpg'],
+  },
+  {
+    name: 'Victoria Driver Licence',
+    model: 'Victoria Driver Licence',
+    images: ['/images/australia.jpg'],
+  },
+  {
+    name: 'Queensland Driver Licence',
+    model: 'Queensland Driver Licence',
+    images: ['/images/australia.jpg'],
+  },
+  {
+    name: 'Western Australia Driver Licence',
+    model: 'WA Driver Licence',
+    images: ['/images/australia.jpg'],
+  },
+  {
+    name: 'South Australia Driver Licence',
+    model: 'SA Driver Licence',
+    images: ['/images/australia.jpg'],
+  },
+  {
+    name: 'Tasmania Driver Licence',
+    model: 'Tasmania Driver Licence',
+    images: ['/images/australia.jpg'],
+  },
+  {
+    name: 'ACT Driver Licence',
+    model: 'ACT Driver Licence',
+    images: ['/images/australia.jpg'],
+  },
+  {
+    name: 'Northern Territory Driver Licence',
+    model: 'NT Driver Licence',
+    images: ['/images/australia.jpg'],
+  },
+]
+
+export const AUSTRALIA_PRODUCTS = buildProducts(RAW_AUSTRALIA, 'australia', 100, 'AUD$', 120)
+  .sort((a, b) => a.name.localeCompare(b.name))
+
+export const ALL_PRODUCTS: Product[] = [
+  ...USA_PRODUCTS,
+  ...CANADA_PRODUCTS,
+  ...UK_PRODUCTS,
+  ...GERMANY_PRODUCTS,
+  ...NETHERLANDS_PRODUCTS,
+  ...AUSTRALIA_PRODUCTS,
+]
 
 export function getProductBySlug(s: string): Product | undefined {
   return ALL_PRODUCTS.find((p) => p.slug === s)
