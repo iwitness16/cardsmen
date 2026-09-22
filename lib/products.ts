@@ -567,7 +567,7 @@ const RAW_UK: { name: string; model: string; images: string[] }[] = [
   {
     name: 'UK Provisional Licence (Polycarbonate)',
     model: 'UK Provisional Licence',
-    images: ['/images/uk1.jpg', '/images/uk2.jpg', '/images/uk3.jpg', '/images/uk4.jpg'],
+    images: ['/images/ukprov.jpg'],
   },
 ]
 
